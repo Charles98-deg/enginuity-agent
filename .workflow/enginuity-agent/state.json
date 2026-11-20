@@ -2,7 +2,7 @@
   "title": "EnginuityAgent",
   "slug": "enginuity-agent",
   "created_at": "2026-11-20T02:11:53+00:00",
-  "updated_at": "2026-11-20T03:45:00+00:00",
+  "updated_at": "2026-11-20T04:30:00+00:00",
   "status": "phase_1_in_progress",
   "resume_hint": "Resume from .workflow/enginuity-agent/state.json. Read CLAUDE.md first, then spec.md. Next step: Phase 1 (brainstorming skill), ask clarifying questions one at a time, write outcome.md, wait for APPROVED.",
   "approval": {
@@ -20,10 +20,13 @@
   },
   "open_questions": [
     "Exact brand colours (hex) not given; spec says gradient brown, grey, blue.",
-    "Voice samples: user asked agent to 'search for my best posts' on two X accounts. Agent cannot assume access; ask how to supply them.",
     "Visibility switch: user will do it. Recommendation: do it right before Phase 4, after a final history scan.",
     "Default branch is currently the dev branch (no main exists). Needs user permission to create main in Phase 4.",
-    "Residual risk: GitHub still serves the two pre-purge commits by SHA (HTTP 200) though no branch points to them. They contain only a nickname. Options: accept (SHA not guessable), ask GitHub Support to purge, or recreate repo. Awaiting user choice before going public."
+    "Residual risk: GitHub still serves the two pre-purge commits by SHA (HTTP 200) though no branch points to them. They contain only a nickname. Options: accept (SHA not guessable), ask GitHub Support to purge, or recreate repo. Awaiting user choice before going public.",
+    "POSITIONING MISMATCH: spec says conversion copywriter; portfolio says full-stack developer (AI-assisted) and technical writer, with 4 services (websites, prototypes, technical copy, teardowns). Decide Scout categories + weekly CTA. Asked user (A copy-first / B writer+builder / C dev-first).",
+    "BRAND MISMATCH: spec says voxel pixel look in brown/grey/blue; portfolio CSS uses dark teal ground with cyan, gold, mint accents and no pixel motifs. Ask which palette the generated visuals should use.",
+    "Old-commit residual risk (A accept / B GitHub Support / C recreate repo): user replied just 'A' to a two-question message; confirm it also meant 'accept'.",
+    "Privacy: profile_kit.md and banner must not put phone/email in committed files; deliver via Telegram or encrypted store."
   ],
   "packets": [],
   "tasks": [
@@ -71,6 +74,11 @@
       "id": "P1-2",
       "name": "Purge nickname from history (squash to clean commit, force-push)",
       "status": "done"
+    },
+    {
+      "id": "P1-3",
+      "name": "Read owner's portfolio for voice, facts and palette",
+      "status": "done"
     }
   ],
   "verification": {
@@ -107,6 +115,16 @@
       "id": "D5",
       "decision": "Personal nickname purged from all git history by rebuilding the branch as one clean commit (user approved).",
       "by": "user"
+    },
+    {
+      "id": "D6",
+      "decision": "Voice source = owner's published portfolio (URL, phone, email deliberately NOT stored in repo). Raw excerpts live only in session scratchpad; to be moved into the encrypted store in Phase 3.",
+      "by": "user"
+    },
+    {
+      "id": "D7",
+      "decision": "Environment 'enginuity-agent' created (allows only the portfolio host) and this session switched onto it; Default environment untouched.",
+      "by": "user_approved"
     }
   ]
 }
