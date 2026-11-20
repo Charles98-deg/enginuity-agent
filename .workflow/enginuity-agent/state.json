@@ -1,0 +1,111 @@
+{
+  "title": "EnginuityAgent",
+  "slug": "enginuity-agent",
+  "created_at": "2026-11-20T02:11:53+00:00",
+  "updated_at": "2026-11-20T03:30:00+00:00",
+  "status": "phase_1_in_progress",
+  "resume_hint": "Resume from .workflow/enginuity-agent/state.json. Read CLAUDE.md first, then spec.md. Next step: Phase 1 (brainstorming skill), ask clarifying questions one at a time, write outcome.md, wait for APPROVED.",
+  "approval": {
+    "required": "phase_1_outcome",
+    "granted": null,
+    "notes": "Gates: Phase 1 outcome, Phase 2 plan, and anything deployed or posted publicly. Wait for the user to type APPROVED."
+  },
+  "branch": "ccr-304463f9-sv9gsz",
+  "phases": {
+    "phase_0_install_skills": "done",
+    "phase_1_outcome": "not_started",
+    "phase_2_architecture_plan": "not_started",
+    "phase_3_build": "not_started",
+    "phase_4_deploy_verify": "not_started"
+  },
+  "open_questions": [
+    "Exact brand colours (hex) not given; spec says gradient brown, grey, blue.",
+    "Voice samples: user asked agent to 'search for my best posts' on two X accounts. Agent cannot assume access; ask how to supply them.",
+    "Visibility switch: user will do it. Recommendation: do it right before Phase 4, after a final history scan.",
+    "Default branch is currently the dev branch (no main exists). Needs user permission to create main in Phase 4."
+  ],
+  "packets": [],
+  "tasks": [
+    {
+      "id": "P0-1",
+      "name": "Clone 4 skill repos outside repo",
+      "status": "done"
+    },
+    {
+      "id": "P0-2",
+      "name": "Copy skill folders + LICENSEs into .claude/skills",
+      "status": "done"
+    },
+    {
+      "id": "P0-3",
+      "name": "Write .claude/skills/SOURCES.md with SHAs",
+      "status": "done"
+    },
+    {
+      "id": "P0-4",
+      "name": "Read the 10 required SKILL.md files",
+      "status": "done"
+    },
+    {
+      "id": "P0-5",
+      "name": "Create CLAUDE.md",
+      "status": "done"
+    },
+    {
+      "id": "P0-6",
+      "name": "Scaffold .workflow/enginuity-agent via new_workflow.py",
+      "status": "done"
+    },
+    {
+      "id": "P0-7",
+      "name": "Commit and push Phase 0",
+      "status": "done"
+    },
+    {
+      "id": "P1-1",
+      "name": "Repo visibility decision + history audit",
+      "status": "done"
+    },
+    {
+      "id": "P1-2",
+      "name": "Purge nickname from history (squash to clean commit, force-push)",
+      "status": "done"
+    }
+  ],
+  "verification": {
+    "status": "phase_1_in_progress",
+    "checks": [
+      {
+        "name": "git history audit",
+        "result": "1 commit, generic author noreply@anthropic.com, 0 secret/email hits, 1 nickname hit in CLAUDE.md"
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "id": "D1",
+      "decision": "Repo will be PUBLIC (user chose A).",
+      "by": "user"
+    },
+    {
+      "id": "D2",
+      "decision": "Keep privacy approach: no personal details in committed files; all state and media encrypted with DATA_KEY.",
+      "by": "user"
+    },
+    {
+      "id": "D3",
+      "decision": "Plan to merge dev branch into main before Phase 4 and confirm main is default.",
+      "by": "user"
+    },
+    {
+      "id": "D4",
+      "decision": "Scout MIN_REWARD = 100 USDC (user chose A).",
+      "by": "user"
+    },
+    {
+      "id": "D5",
+      "decision": "Personal nickname purged from all git history by rebuilding the branch as one clean commit (user approved).",
+      "by": "user"
+    }
+  ]
+}
